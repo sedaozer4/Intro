@@ -1,5 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using Intro.Business;
+using Intro.DataAccess.Concretes;
 using Intro.Entities;
 
 Console.WriteLine("Hello, World!");
@@ -30,6 +31,14 @@ string[] loans = { "Kredi 1", "Kredi 2", "Kredi 3", "Kredi 4", "Kredi 5", "Kredi
 for (int i = 0; i < loans.Length; i++)
 {
     Console.WriteLine(loans[i]);
+}
+
+CourseManager courseManager = new(new EfCourseDal());
+
+List<Course> courses2 = courseManager.GetAll();
+for(int i = 0; i < courses2.Count; i++)
+{
+    Console.WriteLine(courses2[i].Name +" / " + courses2[i].Price);
 }
 
 
@@ -86,4 +95,5 @@ foreach (BaseCustomer customer in customers)
 {
     Console.WriteLine(customer.CustomerNumber);
 }
-
+ 
+ 
